@@ -449,6 +449,9 @@ export const useGridCellEditing = (
           const row = apiRef.current.getRow(id)!;
           Promise.resolve(processRowUpdate(rowUpdate, row, { rowId: id }))
             .then((finalRowUpdate) => {
+              // TODO: [Issue #13261] Use updateServerRows if server-side grouping
+              // eslint-disable-next-line no-console
+              console.log('finalRowUpdate after processRowUpdate:', finalRowUpdate);
               apiRef.current.updateRows([finalRowUpdate]);
               finishCellEditMode();
             })
@@ -457,6 +460,9 @@ export const useGridCellEditing = (
           handleError(errorThrown);
         }
       } else {
+        // TODO: [Issue #13261] Use updateServerRows if server-side grouping
+        // eslint-disable-next-line no-console
+        console.log('finalRowUpdate without processRowUpdate:', rowUpdate);
         apiRef.current.updateRows([rowUpdate]);
         finishCellEditMode();
       }
