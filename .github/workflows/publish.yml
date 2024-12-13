@@ -24,6 +24,9 @@ jobs:
           --scope "@mui/x-data-grid" \
           build
     #   - run: pnpm release:publish
-      - run: pnpm publish --recursive --tag canary
+      - run: |
+          pnpm publish --recursive \
+          --tag canary \
+          --publish-branch 7.23.0+issue-13261
         env:
           NODE_AUTH_TOKEN: ${{ secrets.GHCR_TOKEN_RW }}
