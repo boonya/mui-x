@@ -30,6 +30,7 @@ jobs:
       - name: publish
         # run: pnpm release:publish
         run: |
+          echo '@mui:registry=https://npm.pkg.github.com/boonya' >> .npmrc
           pnpm publish \
           --recursive \
           --tag canary \
