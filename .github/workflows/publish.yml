@@ -34,6 +34,7 @@ jobs:
           pnpm publish \
           --recursive \
           --tag canary \
+          --no-git-checks \
           --publish-branch 7.23.0+issue-13261
         env:
           NODE_AUTH_TOKEN: ${{ secrets.GHCR_TOKEN_RW }}
