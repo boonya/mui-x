@@ -16,15 +16,17 @@ jobs:
           cache: 'pnpm'
           registry-url: 'https://npm.pkg.github.com'
       - run: pnpm install
-    #   - run: pnpm release:build
-      - run: |
-          lerna run --parallel --no-private \
-          --scope "@mui/x-data-grid-premium" \
-          --scope "@mui/x-data-grid-pro" \
-          --scope "@mui/x-data-grid" \
-          build
-    #   - run: pnpm release:publish
-      - run: |
+      - name: build
+        run: pnpm release:build
+        # run: |
+        #   lerna run --parallel --no-private \
+        #   --scope "@mui/x-data-grid-premium" \
+        #   --scope "@mui/x-data-grid-pro" \
+        #   --scope "@mui/x-data-grid" \
+        #   build
+      - name: publish
+        # run: pnpm release:publish
+        run: |
           pnpm publish --recursive \
           --tag canary \
           --publish-branch 7.23.0+issue-13261
