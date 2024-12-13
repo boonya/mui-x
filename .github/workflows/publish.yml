@@ -31,6 +31,7 @@ jobs:
         # run: pnpm release:publish
         run: |
           echo '@mui:registry=https://npm.pkg.github.com/boonya' >> .npmrc
+          echo '//npm.pkg.github.com/:_authToken=${{ secrets.GHCR_TOKEN_RW }}' >> .npmrc
           pnpm publish \
           --recursive \
           --tag canary \
